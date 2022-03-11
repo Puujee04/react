@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lucida Bright', cursive;
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+}
+.flex.column {
+  flex-direction: column;
+}
+.flex.just-start {
+  justify-content: flex-start;
+}
+.flex.just-space-even {
+  justify-content: space-evenly;
+}
+.flex.just-center {
+  justify-content: center;
+}
+.flex.just-between {
+  justify-content: space-between;
+}
+.flex.align-start {
+  align-items: flex-start;
+}
+.flex.align-center {
+  align-items: center;
+}
+input,
+button {
+  background-color: #f4b41a;
+  color: white;
+  border: white 1px solid;
+}
+button::selection {
+  border-color: #143d59;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f4b41a;
+  color: white;
+}
+
+.todoContainer {
+  width: 50%;
+  height: 90%;
+  background-color: #143d59;
+  border-radius: 20px;
+  padding: 0 5%;
+}
+
+.todoHeader {
+  text-align: center;
+  height: 10%;
+  color: #f4b41a;
+  min-height: 30px;
+}
+
+.addList {
+  height: 10%;
+  min-height: 30px;
+}
+
+.addList input {
+  height: 70%;
+  width: 90%;
+  font-size: 20px;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+.addList button {
+  height: 70%;
+  width: 10%;
+  min-width: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.todoList {
+  border-top: white 2px solid;
+  flex: 1;
+}
+
+.todoDone {
+  flex: 1;
+  border-top: white 2px solid;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+}
+
+li input {
+  margin-right: 8px;
+}
+
+li button {
+  height: 20px;
+  width: 20px;
+  margin: 0 5px;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bolder;
+  border-radius: 10%;
+}
+
+li button:first-child {
+  color: #f4b41a;
+}
+
+li button:last-child {
+  color: red;
+}
