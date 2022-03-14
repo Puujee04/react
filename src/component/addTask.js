@@ -1,13 +1,14 @@
 import React from "react";
 import { useState } from "react";
 
-export const AddTask = ({task, setTask}) => {
+export const AddTask = ({tasks, setTask}) => {
     const [title, setTitle] = useState('');
-    const click = () => {
-        task = { title: title }
-        
-        setTask('');
-
+    const click = () => { 
+        const newTask = [...tasks, { title: title,
+            isDone: false }];
+        setTitle('');
+        // console.log(tasks, setTask)
+        setTask(newTask);
     }
     return (
         <div className='addList flex just-center align-start'>

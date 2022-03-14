@@ -3,13 +3,18 @@ import './todo.css';
 import { AddTask } from './addTask';
 import {TaskList} from './taskList';
 export default function Todo(){
-    const [ tasks, setTasks ] = useState([]);
-    const [doneTasks, setDoneTasks] = useState([]);
-    const removeTask = (index) => {
+    const [tasks, setTask] = useState([]);
+    // const [ tasks, setTasks ] = useState([]);
+    // const [doneTasks, setDoneTasks] = useState([]);
+    const deleteTask = (index) => {
         const filteredTask = tasks.filter((_el, i) => index !== i)
-        setTasks(filteredTask); 
+        setTask(filteredTask);
     }
-    console.log(tasks);
+    const transferTask = (index, value) => {
+        value === true ? tasks[index].isDone = false : tasks[index].isDone = true;
+        setTask(tasks);
+    }
+    // console.log(tasks);
     
     return(
         <div className='container flex just-center align-center'>
@@ -17,8 +22,8 @@ export default function Todo(){
                 <header className='todoHeader'>
                     <h1>TODO</h1>
                 </header>
-                <AddTask setTask = {setTasks} tasks={tasks}></AddTask>
-                {/* <TaskList tasks = {tasks} removeTask={removeTask}></TaskList> */}
+                <AddTask setTask = {setTask} tasks={tasks}></AddTask>
+                <TaskList tasks = {tasks} removeTask = {deleteTask} transferTask = {transferTask}></TaskList>
                 {/* <div className='todoDone'>
                     <ul id='doneListUI'>
                     </ul>    
