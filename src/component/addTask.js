@@ -1,14 +1,22 @@
 import React from "react";
 import { useState } from "react";
-
-export const AddTask = ({tasks, setTask}) => {
+import { db } from "./firebase";
+export const AddTask = () => {
     const [title, setTitle] = useState('');
+
     const click = () => { 
-        const newTask = [...tasks, { title: title,
-            isDone: false }];
+        const time = Date.now();
+        db.collection("Tasks").add({
+            title: title,
+            isDone: false,
+            time: time
+        })
+
+        // const newTask = [...tasks, { title: title,
+        //     isDone: false }];
         setTitle('');
         // console.log(tasks, setTask)
-        setTask(newTask);
+        // setTask(newTask);
     }
     return (
         <div className='addList flex just-center align-start'>
