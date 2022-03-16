@@ -8,22 +8,20 @@ export default function Todo() {
     const [tasks, setTask] = useState([]);
 
     console.log(tasks);
-    const deleteTask = (index) => {
-        const filteredTask = tasks.filter((_el, i) => index !== i);
-        setTask(filteredTask);
+    const deleteTask = (id) => {
+        // const filteredTask = tasks.filter(({id}) => id !== idS);
+        // setTask(filteredTask);
+        db.collection("Tasks").doc(id).delete().then(() => {
+            console.log("Document successfully deleted!");
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
     }
-    const transferTask = (index) => {
-        console.log(index, ' --- ')
-        const newTasks = tasks.map((el, i) => {
-            if (index === i) {
-                if (el.isDone) el.isDone = false;
-                else el.isDone = true;
-                console.log(el);
-            }
-            return el;
-        })
-        console.log(newTasks);
-        setTask(newTasks);
+    const transferTask = (id, isDone) => {
+        // console.log(index, ' --- ')
+        db.collection('Tasks').doc(id).set({
+            isDone: !isDone
+        }, { merge: true });
     }
 
     useEffect(() => {

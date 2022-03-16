@@ -8,9 +8,9 @@ export const DoneTaskList = ({ tasks, removeTask, transferTask }) => {
         <div className='todoDone'>
             <ul className='doneListUI'>
                 {
-                    tasks.map(({ title, isDone }, i) => {
-                        return <TaskDetail title={title} isDone={isDone} key={i} removeTask={() => removeTask(i)} i={i} transferTask={() => transferTask(i)}></TaskDetail>
-                    }).filter(({ isDone }) => isDone)
+                    tasks.filter(({ isDone }) => isDone).map(({ title, isDone, id }, i) => {
+                        return <TaskDetail title={title} isDone={isDone} key={i} removeTask={removeTask} id={id} transferTask={transferTask}></TaskDetail>
+                    })
                 }
             </ul>
         </div>)
